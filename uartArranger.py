@@ -21,10 +21,11 @@ if ser.isOpen():
    uartList1=list(data)
    
    print len(uartList)
-   #This function is to test the gotten data and discriminate the unwanted data.
-   #If the number of element of the data is less than 3, the data is not reliable.
    
-def uartDiscri(list1):
+   
+def uart_discri(list1):
+ '''This function is to test the gotten data and discriminate the unwanted data.
+   If the number of element of the data is less than 3, the data is not reliable.'''
  #The if statements that makes sure it is less than 3 element . 
   if len(list1)<=3:
      list2=list(list1[0:2])
@@ -50,10 +51,11 @@ def uartDiscri(list1):
    else:
        print("Data not correct\n")	 
 
-#This function is to arrange the data as it is suppose to be from the other micro-controller. 
-#The ring buffer sends signals in a FIFO format "Z" is assigned as the start of the data.
+.
 	   
-def uartZee(unarrangedList):
+def uart_zee(unarrangedList):
+   '''This function is to arrange the data as it is suppose to be from the other micro-controller. 
+The ring buffer sends signals in a FIFO format "Z" is assigned as the start of the data'''
    if( "Z" in unarrangedList):
        print ("Yes")
        d = unarrangedList.index("Z")
@@ -100,11 +102,12 @@ def uartZee(unarrangedList):
    else:
      print ("Incorrect data has been sent across i.e Z is missing\n")
  
-#This function is to convert from string to integers.
-#It works for four digits numbers.
-#It compares the index of the array to the alphabet generated in list alphabet.		
 	
-def uartCompare(Listing):
+	
+def uart_compare(Listing):
+       '''This function is to convert from string to integers.
+       It works for four digits numbers.
+       It compares the index of the array to the alphabet generated in list alphabet.'''	
        alphabet=["A","B","C","D","E","F","G","H","I","J"]
        
        answerLength =len(Listing)
@@ -136,7 +139,7 @@ def uartCompare(Listing):
 	   
 if __name__ == "__main__":		
 
-answer1 =uartDiscri(uartlist1)
+answer1 =uart_discri(uartlist1)
 answer2 = uartList
 
 if( answer1==answer2):
@@ -144,4 +147,4 @@ if( answer1==answer2):
 else:
     print("Something is wrong somewhere\n")
 
-uartCompare(answer2)	
+uart_compare(answer2)	
