@@ -29,7 +29,7 @@ if ser.isOpen():
 
   print "Serial is open"
 
-def normChar():
+def norm_char():
      
      '''It sends normal characters typed into the terminal'''
 
@@ -58,7 +58,7 @@ def uharty():
      return charHexa      
 
 
-def modData():
+def mod_data():
 
      '''It takes characters typed into the terminal and convert it to modbus format string'''
 
@@ -113,14 +113,14 @@ def modData():
      fb= ' '.join([hex(i) for i in listAns]) 
      return fb  
  
-def hexToDec(relData):
+def hex_to_dec(relData):
    
      '''It takes hexadecimal and converts it to a decimal string'''
    
      charaString=(''.join(chr(i) for i in relData))
      return charaString
 
-def toArray():
+def to_array():
 
     '''It convert data into Array Hexadecimal'''
 
@@ -146,7 +146,7 @@ def toArray():
     #('[{}]'.format(', '.join(hex(ord(n6)) for x in len(n6))))
     print n6
   
-def crcCheck( indata):
+def crc_check( indata):
 
    '''It performs Cyclic Redundancy Check (CRC) on a given data list'''
    
@@ -163,7 +163,7 @@ def crcCheck( indata):
 	    crc >>=1           
    return crc
 
-def crcPlusMessage(message):
+def crc_plus_message(message):
 
   '''It adds the CRC to the data to be sent they are both in hexadecimal'''
   
@@ -182,7 +182,7 @@ def messenger():
     print (message1 + message2)
 
     
-def readData():
+def read_data():
 
      '''It reads data from the UART'''
 
@@ -191,7 +191,7 @@ def readData():
      readMyData=ser.readline()
      print readMyData
 
-def writeData(myData):
+def write_data(myData):
 
        '''It writes array data to the UART'''
        
@@ -202,7 +202,7 @@ def writeData(myData):
        ser.write(myStr)
        time.sleep(1)
 
-def writeDataStr(StrData):
+def write_data_str(StrData):
     '''It writes string data to the UART'''
     ser.write(StrData)
     time.sleep(1) 
@@ -212,14 +212,14 @@ def writeDataStr(StrData):
 #if __name__=="__main__":
 
 while 1:
-    #toArray()
+    #to_array()
     #hexToDec([0x45, 0x7e, 0x3])
-    #writeData(crcPlusMessage(toArray()))
-    #crcPlusMessage([0x83,0x01])
-    #crcCheck(toArray())
-    writeDataStr(modData())
+    #write_data(crc_plus_message(to_array()))
+    #crc_plus_message([0x83,0x01])
+    #crc_check(to_array())
+    write_data_str(modData())
     #uharty()
     #messenger()
-    readData()
-    #modData()
-    #modArray()
+    read_data()
+    #mod_data()
+    #mod_array()
